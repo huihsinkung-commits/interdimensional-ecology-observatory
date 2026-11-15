@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react'
 import { useWorld } from '../context/WorldContext'
 import './CivilizationObservatory.css'
@@ -33,17 +32,17 @@ const POLICIES: {
   {
     id: 'agriculture',
     name: '農業發展',
-    description: '消耗木材與能源，增加食物供應。',
+    description: '消耗木材與能源，增加食物供應',
   },
   {
     id: 'research',
     name: '技術研究',
-    description: '消耗礦物與能源，提升文明科技。',
+    description: '消耗礦物與能源，提升文明科技',
   },
   {
     id: 'exchange',
     name: '文化交流',
-    description: '消耗食物與能源，留下文化交流紀錄。',
+    description: '消耗食物與能源，留下文化交流紀錄',
   },
 ]
 
@@ -85,8 +84,7 @@ export default function CivilizationObservatory() {
   } = useWorld()
 
   const [selectedId, setSelectedId] = useState('')
-  const [notes, setNotes] =
-    useState<ResearchNote[]>(loadNotes)
+  const [notes, setNotes] = useState<ResearchNote[]>(loadNotes)
   const [noteText, setNoteText] = useState('')
   const [feedback, setFeedback] = useState('')
 
@@ -102,7 +100,7 @@ export default function CivilizationObservatory() {
 
   const archived = activeBranch?.archived === true
 
-  // 切換平行世界時，清除上一個世界的操作提示。
+  // 切換平行世界時，清除上一個世界的操作提示
   useEffect(() => {
     setFeedback('')
     setNoteText('')
@@ -119,14 +117,13 @@ export default function CivilizationObservatory() {
       item.civilizationId === selected?.id
   )
 
-  // 5-54：只使用已保存的歷史節點。
+  // 5-54：只使用已保存的歷史節點
   const history = selected
     ? historyNodes
         .map(node => {
           const civ = node.world.civilizations.find(
             item => item.id === selected.id
           )
-
           return civ
             ? {
                 id: node.id,
@@ -149,8 +146,7 @@ export default function CivilizationObservatory() {
         .sort((a, b) => a.day - b.day)
     : []
 
-  const dayMap = new Map<number, (typeof history)[number]>()
-
+  const dayMap = new Map<number, typeof history[number]>()
   for (const item of history) {
     dayMap.set(item.day, item)
   }
@@ -164,23 +160,20 @@ export default function CivilizationObservatory() {
     ...trend.map(item => item.population)
   )
 
-  // 5-55：三種政策共用相同的資源檢查邏輯。
-  function applyPolicy(kind: PolicyKind) {
+  // 5-55：三種政策共用相同的資源檢查邏輯
+  function applyPolicy(kind: PolicyKind) { 
     if (!selected || archived) return
 
     const current = world.resources
-
     const sufficient =
       kind === 'agriculture'
         ? current.wood >= 15 && current.energy >= 10
         : kind === 'research'
-          ? current.minerals >= 15 &&
-            current.energy >= 15
-          : current.food >= 20 &&
-            current.energy >= 10
+          ? current.minerals >= 15 && current.energy >= 15
+          : current.food >= 20 && current.energy >= 10
 
     if (!sufficient) {
-      setFeedback('資源不足，無法執行此項政策。')
+      setFeedback('資源不足，無法執行此項政策')
       return
     }
 
@@ -188,21 +181,17 @@ export default function CivilizationObservatory() {
 
     setWorld(previous => {
       const resources = { ...previous.resources }
-
-      const civilizationsNext =
+      const civilizationsNext = 
         previous.civilizations.map(civ => {
           if (civ.id !== currentId) return civ
-
           if (kind === 'research') {
             return {
               ...civ,
               technology: round(civ.technology + 3),
             }
           }
-
           if (kind === 'exchange') {
             const marker = `第${previous.info.time}天文化交流`
-
             return {
               ...civ,
               culture: civ.culture.includes(marker)
@@ -210,7 +199,6 @@ export default function CivilizationObservatory() {
                 : `${civ.culture}；${marker}`,
             }
           }
-
           return civ
         })
 
@@ -234,12 +222,9 @@ export default function CivilizationObservatory() {
     })
 
     const descriptions: Record<PolicyKind, string> = {
-      agriculture:
-        '農業發展完成：食物 +40、木材 -15、能源 -10。',
-      research:
-        '技術研究完成：科技 +3、礦物 -15、能源 -15。',
-      exchange:
-        '文化交流完成：文化紀錄已更新，食物 -20、能源 -10。',
+      agriculture: '農業發展完成：食物 +40、木材 -15、能源 -10。',
+      research: '技術研究完成：科技 +3、礦物 -15、能源 -15。',
+      exchange: '文化交流完成：文化紀錄已更新，食物 -20、能源 -10。',
     }
 
     setFeedback(descriptions[kind])
@@ -259,20 +244,16 @@ export default function CivilizationObservatory() {
     }
 
     const next = [...notes, note].slice(-500)
-
     try {
       localStorage.setItem(
         STORAGE_KEY,
         JSON.stringify(next)
       )
-
       setNotes(next)
       setNoteText('')
-      setFeedback('文明研究筆記已儲存。')
+      setFeedback('文明研究筆記已儲存')
     } catch {
-      setFeedback(
-        '筆記儲存失敗，請確認瀏覽器儲存空間。'
-      )
+      setFeedback('筆記儲存失敗，請確認瀏覽器儲存空間')
     }
   }
 
@@ -281,36 +262,24 @@ export default function CivilizationObservatory() {
       <header className="civil-header">
         <div>
           <h2>文明觀測所</h2>
-          <p>
-            觀察文明如何在環境與資源之間發展。
-          </p>
+          <p>觀察文明如何在環境與資源之間發展</p>
         </div>
-
         <div className="civil-world">
-          <strong>
-            {activeBranch?.name ?? world.info.name}
-          </strong>
+          <strong>{activeBranch?.name ?? world.info.name}</strong>
           <small>第 {world.info.time} 天</small>
         </div>
       </header>
 
       <div className="civil-summary">
         <span>文明數量：{civilizations.length}</span>
-        <span>
-          文明總人口：{Math.round(populationTotal)}
-        </span>
-        <span>
-          世界食物：{round(world.resources.food)}
-        </span>
+        <span>文明總人口：{Math.round(populationTotal)}</span>
+        <span>世界食物：{round(world.resources.food)}</span>
       </div>
 
       <h3>文明總覽</h3>
 
       {civilizations.length === 0 ? (
-        <p>
-          目前世界尚未出現文明。
-          請先觀察世界演化。
-        </p>
+        <p>目前世界尚未出現文明，請先觀察世界演化</p>
       ) : (
         <>
           <div className="civil-grid">
@@ -330,12 +299,8 @@ export default function CivilizationObservatory() {
               >
                 <span className="civil-icon">🏘️</span>
                 <strong>{civ.name}</strong>
-                <small>
-                  {STAGE_LABELS[civ.stage] ?? civ.stage}
-                </small>
-                <span>
-                  人口：{Math.round(civ.population)}
-                </span>
+                <small>{STAGE_LABELS[civ.stage] ?? civ.stage}</small>
+                <span>人口：{Math.round(civ.population)}</span>
               </button>
             ))}
           </div>
@@ -343,110 +308,69 @@ export default function CivilizationObservatory() {
           {selected && (
             <div className="civil-detail">
               <h3>🏛️ {selected.name}｜文明檔案</h3>
-
               <div className="civil-stats">
                 <div>
                   <small>發展階段</small>
-                  <strong>
-                    {STAGE_LABELS[selected.stage] ??
-                      selected.stage}
-                  </strong>
+                  <strong>{STAGE_LABELS[selected.stage] ?? selected.stage}</strong>
                 </div>
                 <div>
                   <small>文明人口</small>
-                  <strong>
-                    {Math.round(selected.population)}
-                  </strong>
+                  <strong>{Math.round(selected.population)}</strong>
                 </div>
                 <div>
                   <small>科技程度</small>
-                  <strong>
-                    {round(selected.technology)}
-                  </strong>
+                  <strong>{round(selected.technology)}</strong>
                 </div>
                 <div>
                   <small>食物資源</small>
-                  <strong>
-                    {round(world.resources.food)}
-                  </strong>
+                  <strong>{round(world.resources.food)}</strong>
                 </div>
               </div>
 
               <h4>文化觀測</h4>
-              <p className="civil-culture">
-                {selected.culture || '尚無文化紀錄'}
-              </p>
+              <p className="civil-culture">{selected.culture || '尚無文化紀錄'}</p>
 
               <h4>文明生存環境</h4>
               <p>
-                溫度：
-                {round(world.environment.temperature)}°C；
-                水資源：
-                {round(world.environment.water)}；
-                土壤肥沃度：
-                {round(world.environment.soilFertility)}。
+                溫度：{round(world.environment.temperature)}°C；
+                水資源：{round(world.environment.water)}；
+                土壤肥沃度：{round(world.environment.soilFertility)}。
               </p>
 
               <h4>文明發展歷程</h4>
-
               {trend.length < 2 ? (
-                <p>
-                  歷史資料不足。
-                  請先在不同日期建立歷史節點。
-                </p>
+                <p>歷史資料不足，請先在不同日期建立歷史節點</p>
               ) : (
                 <div className="civil-trend">
                   {trend.map(point => (
-                    <div
-                      key={point.day}
-                      className="civil-trend-row"
-                    >
+                    <div key={point.day} className="civil-trend-row">
                       <small>第 {point.day} 天</small>
-
                       <div className="civil-trend-track">
                         <div
                           className="civil-trend-bar"
                           style={{
-                            width: `${
-                              point.population /
-                              maxPopulation * 100
-                            }%`,
+                            width: `${(point.population / maxPopulation) * 100}%`,
                           }}
                         />
                       </div>
-
-                      <strong>
-                        {Math.round(point.population)}
-                      </strong>
-
-                      <small>
-                        科技 {round(point.technology)}
-                      </small>
+                      <strong>{Math.round(point.population)}</strong>
+                      <small>科技 {round(point.technology)}</small>
                     </div>
                   ))}
                 </div>
               )}
 
               <h4>文明政策實驗</h4>
-              <p>
-                玩家可調整發展條件，
-                後續結果仍由世界模擬系統演化。
-              </p>
-
+              <p>玩家可調整發展條件，後續結果仍由世界模擬系統演化</p>
               <div className="civil-policy-grid">
                 {POLICIES.map(policy => (
-                  <div
-                    key={policy.id}
-                    className="civil-policy"
-                  >
+                  <div key={policy.id} className="civil-policy">
                     <strong>{policy.name}</strong>
                     <small>{policy.description}</small>
                     <button
                       type="button"
                       disabled={archived}
-                      onClick={() =>
-                        applyPolicy(policy.id)
-                      }
+                      onClick={() => applyPolicy(policy.id)}
                     >
                       執行政策
                     </button>
@@ -455,32 +379,23 @@ export default function CivilizationObservatory() {
               </div>
 
               {archived && (
-                <p>
-                  目前世界已封存，
-                  請重新啟用後再執行政策。
-                </p>
+                <p>目前世界已封存，請重新啟用後再執行政策</p>
               )}
 
               {feedback && (
-                <div
-                  className="civil-feedback"
-                  role="status"
-                >
+                <div className="civil-feedback" role="status">
                   {feedback}
                 </div>
               )}
 
               <h4>文明研究筆記</h4>
-
               <textarea
                 aria-label="文明研究筆記"
                 rows={4}
                 maxLength={1000}
                 placeholder="記錄文明的發展與研究發現……"
                 value={noteText}
-                onChange={event =>
-                  setNoteText(event.target.value)
-                }
+                onChange={event => setNoteText(event.target.value)}
               />
 
               <button
@@ -493,18 +408,15 @@ export default function CivilizationObservatory() {
 
               <div className="civil-notes">
                 <h4>研究紀錄</h4>
-
                 {ownNotes.length === 0 ? (
-                  <p>目前沒有研究筆記。</p>
+                  <p>目前沒有研究筆記</p>
                 ) : (
                   [...ownNotes]
                     .reverse()
                     .slice(0, 10)
                     .map(note => (
                       <article key={note.id}>
-                        <small>
-                          第 {note.day} 天
-                        </small>
+                        <small>第 {note.day} 天</small>
                         <p>{note.text}</p>
                       </article>
                     ))
@@ -512,8 +424,8 @@ export default function CivilizationObservatory() {
               </div>
             </div>
           )}
-        </>
-      )}
+        </>)
+      }
     </section>
   )
 }

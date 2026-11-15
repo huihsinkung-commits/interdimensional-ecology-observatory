@@ -175,9 +175,9 @@ export default function CreatureEncyclopedia() {
       )
       setNotes(next)
       setNoteText('')
-      setMessage('觀測筆記已儲存。')
+      setMessage('觀測筆記已儲存')
     } catch {
-      setMessage('儲存失敗，請檢查瀏覽器儲存空間。')
+      setMessage('儲存失敗，請檢查瀏覽器儲存空間')
     }
   }
 
@@ -186,7 +186,7 @@ export default function CreatureEncyclopedia() {
       <header className="creature-heading">
         <div>
           <h2>異界生物圖鑑</h2>
-          <p>探索生命如何回應世界的變化。</p>
+          <p>探索生命如何回應世界的變化</p>
         </div>
         <div className="creature-world">
           <strong>
@@ -278,7 +278,7 @@ export default function CreatureEncyclopedia() {
       </div>
 
       {filtered.length === 0 && (
-        <p>沒有符合條件的生物。</p>
+        <p>沒有符合條件的生物</p>
       )}
 
       {selected && (
@@ -325,14 +325,14 @@ export default function CreatureEncyclopedia() {
             目前食物資源：
             {' '}{Number(world.resources.food.toFixed(2))}。
             食物需求為模型參數，不能直接當成
-            每日實際消耗量。
+            每日實際消耗量
           </p>
 
           <h4>族群歷史趨勢</h4>
           {trend.length < 2 ? ( 
             <p>
-              歷史資料不足。
-              請先讓世界演化並建立不同日期的歷史節點。
+              歷史資料不足
+              請先讓世界演化並建立不同日期的歷史節點
             </p>
           ) : ( 
             <div className="creature-trend">

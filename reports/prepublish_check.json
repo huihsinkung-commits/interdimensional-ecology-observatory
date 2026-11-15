@@ -1,7 +1,7 @@
 {
   "project": "異界生態觀測局",
-  "checked_at": "2026-11-15T09:18:34.373557",
-  "passed": 24,
+  "checked_at": "2026-11-15T14:43:20.504630",
+  "passed": 27,
   "total": 27,
   "checks": [
     {
@@ -91,7 +91,7 @@
     },
     {
       "name": "歷史管理",
-      "passed": false,
+      "passed": true,
       "detail": ""
     },
     {
@@ -131,12 +131,12 @@
     },
     {
       "name": "已明確設定 Vite base",
-      "passed": false,
-      "detail": "GitHub Pages 專案網址通常需要正確的 base 路徑。"
+      "passed": true,
+      "detail": "GitHub Pages 專案網址通常需要正確的 base 路徑"
     },
     {
       "name": "AGENTS.md 已存在",
-      "passed": false,
+      "passed": true,
       "detail": ""
     }
   ]
