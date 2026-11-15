@@ -1,0 +1,144 @@
+
+/* 【AI 參與】世界歷史節點管理介面 */
+.history-manager {
+  margin: 22px 0;
+  padding: 24px;
+  border: 1px solid rgba(201,177,126,.3);
+  border-radius: 20px;
+  background: rgba(12,35,37,.92);
+  color: #ecf4ee;
+}
+.history-manager-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: start;
+}
+.history-manager h2 { margin: 0 0 8px; }
+.history-manager-heading p {
+  margin: 0 0 18px;
+  color: #abc9bf;
+}
+.history-manager-heading span {
+  color: #e4c992;
+}
+.history-save-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.history-save-row input {
+  flex: 1;
+  min-width: 190px;
+}
+.history-manager input,
+.history-manager select {
+  padding: 11px 12px;
+  border-radius: 10px;
+  border: 1px solid #56736c;
+  background: #173638;
+  color: #f2f6f1;
+}
+.history-manager button {
+  padding: 9px 13px;
+  border: 1px solid rgba(201,177,126,.45);
+  border-radius: 10px;
+  background: rgba(201,177,126,.13);
+  color: #f3d9a6;
+  cursor: pointer;
+}
+.history-manager button:hover {
+  background: rgba(201,177,126,.25);
+}
+.history-manager button:focus-visible,
+.history-manager input:focus-visible,
+.history-manager select:focus-visible {
+  outline: 2px solid #e4c992;
+  outline-offset: 2px;
+}
+.history-manager-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+.history-manager-toolbar label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.history-manager-toolbar small {
+  color: #a9c5bd;
+}
+.history-manager-empty {
+  padding: 20px;
+  text-align: center;
+  color: #a9c5bd;
+}
+.history-node-list {
+  display: grid;
+  gap: 10px;
+  max-height: 440px;
+  overflow-y: auto;
+}
+.history-node {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid rgba(180,209,195,.16);
+  border-radius: 13px;
+  background: rgba(255,255,255,.035);
+}
+.history-node-info {
+  display: grid;
+  gap: 5px;
+}
+.history-node-info small {
+  color: #aac9c0;
+}
+.history-node-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.history-manager .history-danger {
+  color: #ffb6ae;
+  border-color: rgba(255,150,140,.35);
+}
+.history-dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(0,0,0,.75);
+}
+.history-dialog {
+  width: min(100%, 490px);
+  padding: 26px;
+  border: 1px solid #c9b17e;
+  border-radius: 18px;
+  background: #173638;
+  box-shadow: 0 18px 70px rgba(0,0,0,.5);
+}
+.history-dialog h3 {
+  margin-top: 0;
+  color: #f1d8a5;
+}
+.history-dialog p {
+  line-height: 1.7;
+}
+.history-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}

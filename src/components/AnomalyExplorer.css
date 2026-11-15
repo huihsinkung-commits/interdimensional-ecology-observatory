@@ -1,0 +1,140 @@
+
+/* 【AI 參與】探索與異常事件介面 */
+
+.anomaly-explorer {
+  margin: 24px 0;
+  padding: 24px;
+  border: 1px solid rgba(201,177,126,.35);
+  border-radius: 22px;
+  background: rgba(12,35,37,.95);
+  color: #ecf4ee;
+}
+
+.anomaly-heading {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.anomaly-heading h2 { margin: 0 0 8px; }
+
+.anomaly-explorer p {
+  color: #abc9bf;
+  line-height: 1.7;
+}
+
+.anomaly-world {
+  display: grid;
+  gap: 5px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: rgba(201,177,126,.12);
+}
+
+.anomaly-world small { color: #abc9bf; }
+
+.anomaly-overview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.anomaly-overview span {
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(201,177,126,.1);
+}
+
+.anomaly-start,
+.anomaly-event {
+  padding: 28px;
+  margin-top: 18px;
+  border: 1px solid rgba(180,209,195,.2);
+  border-radius: 16px;
+  background: rgba(255,255,255,.035);
+  text-align: center;
+}
+
+.anomaly-symbol {
+  font-size: 46px;
+  margin-bottom: 12px;
+}
+
+.anomaly-start h3,
+.anomaly-event h3 {
+  color: #e4c992;
+}
+
+.anomaly-start button {
+  padding: 12px 24px;
+  border: 1px solid #e4c992;
+  border-radius: 11px;
+  background: #e4c992;
+  color: #183637;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.anomaly-choices {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit, minmax(190px, 1fr)
+  );
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.anomaly-choices button {
+  display: grid;
+  gap: 10px;
+  padding: 18px;
+  border: 1px solid rgba(201,177,126,.45);
+  border-radius: 12px;
+  background: #173638;
+  color: #ecf4ee;
+  cursor: pointer;
+  text-align: left;
+}
+
+.anomaly-choices button:hover {
+  background: #254744;
+}
+
+.anomaly-choices small {
+  color: #abc9bf;
+  line-height: 1.6;
+}
+
+.anomaly-feedback {
+  padding: 14px;
+  margin-top: 16px;
+  border-left: 3px solid #e4c992;
+  border-radius: 8px;
+  background: rgba(201,177,126,.09);
+}
+
+.anomaly-history {
+  margin-top: 22px;
+}
+
+.anomaly-history article {
+  padding: 14px;
+  margin: 10px 0;
+  border: 1px solid rgba(180,209,195,.18);
+  border-radius: 11px;
+}
+
+.anomaly-history article p {
+  margin: 8px 0;
+}
+
+.anomaly-history small {
+  color: #e4c992;
+}
+
+.anomaly-explorer button:focus-visible {
+  outline: 2px solid #e4c992;
+  outline-offset: 3px;
+}

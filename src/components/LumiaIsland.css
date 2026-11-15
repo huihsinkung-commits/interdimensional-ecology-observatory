@@ -1,0 +1,233 @@
+/* ============================================================
+   露米亞 2.5D 島嶼場景樣式
+
+   【AI 參與說明】
+   ChatGPT 協助設計場景外框與響應式顯示
+   ============================================================ */
+
+.lumia-scene {
+  margin: 35px 0;
+  padding: 22px;
+  border-radius: 24px;
+  background: #152f34;
+  border: 1px solid rgba(173, 215, 195, 0.2);
+}
+
+.lumia-scene-heading {
+  margin-bottom: 18px;
+}
+
+.lumia-scene-heading span {
+  color: #a0c9b9;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.lumia-scene-heading h2 {
+  margin: 8px 0;
+  color: #f2dfa9;
+  font-size: clamp(22px, 3vw, 30px);
+}
+
+.lumia-scene-heading p {
+  color: #b4cac5;
+  font-size: 14px;
+}
+
+.lumia-scene-frame {
+  overflow: hidden;
+  border-radius: 18px;
+  background: #d3e8e4;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+}
+
+.lumia-scene-frame svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.lumia-scene-note {
+  margin: 14px 0 0;
+  color: #91ada5;
+  font-size: 12px;
+  text-align: center;
+}
+
+
+/* ============================================================
+   第五章 5-5：遊戲主場景布局優化
+
+   【AI 參與說明】
+   ChatGPT 協助撰寫 CSS
+   ============================================================ */
+
+.lumia-scene {
+  margin: 12px 0 28px;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 28px;
+  border: 1px solid rgba(180, 218, 204, 0.25);
+  background: #18363b;
+}
+
+.lumia-scene-heading {
+  padding: 24px 28px 12px;
+  margin-bottom: 0;
+}
+
+.lumia-scene-frame {
+  margin: 0 14px 14px;
+  border-radius: 22px;
+}
+
+.lumia-scene-frame svg {
+  width: 100%;
+  height: auto;
+}
+
+.lumia-scene-note {
+  padding-bottom: 15px;
+}
+
+@media (max-width: 650px) {
+  .lumia-scene {
+    border-radius: 18px;
+  }
+
+  .lumia-scene-heading {
+    padding: 18px 16px 10px;
+  }
+
+  .lumia-scene-frame {
+    margin: 0 8px 8px;
+    border-radius: 14px;
+  }
+}
+
+
+/* ============================================================
+   第五章 5-6：露米亞生物活動動畫
+
+   【AI 參與說明】
+   ChatGPT 協助設計三種生物活動效果
+   ============================================================ */
+
+.lumia-creature-walk {
+  animation: lumiaWalk 4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center bottom;
+}
+
+.lumia-creature-hop {
+  animation: lumiaHop 2.2s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center bottom;
+}
+
+.lumia-creature-sway {
+  animation: lumiaSway 3.5s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center bottom;
+}
+
+@keyframes lumiaWalk {
+  0%, 100% {
+    transform: translateX(-8px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+}
+
+@keyframes lumiaHop {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  45% {
+    transform: translateY(-16px);
+  }
+  60% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes lumiaSway {
+  0%, 100% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(6deg);
+  }
+}
+
+/* 尊重使用者的減少動態效果設定 */
+@media (prefers-reduced-motion: reduce) {
+  .lumia-creature-walk,
+  .lumia-creature-hop,
+  .lumia-creature-sway {
+    animation: none;
+  }
+}
+
+
+/* ============================================================
+   第五章 5-14：環境視覺演化過渡效果
+
+   【AI 參與說明】
+   ChatGPT 協助設計 SVG 過渡動畫
+   ============================================================ */
+
+.lumia-scene-frame svg path,
+.lumia-scene-frame svg ellipse {
+  transition:
+    fill 1.5s ease,
+    stroke 1.5s ease,
+    stroke-width 1.5s ease,
+    opacity 1.5s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lumia-scene-frame svg path,
+  .lumia-scene-frame svg ellipse {
+    transition: none;
+  }
+}
+
+
+/* ============================================================
+   第五章 5-17：文明聚落視覺演化
+
+   【AI 參與說明】
+   ChatGPT 協助設計房屋出現動畫與狀態顯示。
+   ============================================================ */
+
+.lumia-cottage-appear {
+  animation: lumiaCottageAppear 1.1s ease-out both;
+}
+
+@keyframes lumiaCottageAppear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.lumia-civilization-status {
+  display: inline-block;
+  margin: 0 8px 12px 0;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(230, 193, 140, 0.12);
+  border: 1px solid rgba(230, 193, 140, 0.25);
+  color: #f2d6a5;
+  font-size: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lumia-cottage-appear {
+    animation: none;
+  }
+}

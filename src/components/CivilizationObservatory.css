@@ -1,0 +1,226 @@
+
+/* 【AI 參與】文明觀測所視覺設計 */
+
+.civil-observatory {
+  margin: 24px 0;
+  padding: 24px;
+  border: 1px solid rgba(201,177,126,.35);
+  border-radius: 22px;
+  background: rgba(12,35,37,.95);
+  color: #ecf4ee;
+}
+
+.civil-header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.civil-header h2 { margin: 0 0 8px; }
+
+.civil-observatory p {
+  color: #abc9bf;
+  line-height: 1.7;
+}
+
+.civil-world {
+  display: grid;
+  gap: 5px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: rgba(201,177,126,.12);
+}
+
+.civil-world small,
+.civil-card small,
+.civil-policy small {
+  color: #abc9bf;
+}
+
+.civil-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.civil-summary span {
+  padding: 11px 14px;
+  border-radius: 10px;
+  background: rgba(201,177,126,.1);
+}
+
+.civil-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit, minmax(160px, 1fr)
+  );
+  gap: 12px;
+}
+
+.civil-card {
+  display: grid;
+  justify-items: start;
+  gap: 9px;
+  padding: 17px;
+  border: 1px solid #45655e;
+  border-radius: 15px;
+  background: #173638;
+  color: #ecf4ee;
+  text-align: left;
+  cursor: pointer;
+}
+
+.civil-card.active {
+  border-color: #e4c992;
+  background: #254744;
+}
+
+.civil-icon { font-size: 29px; }
+
+.civil-detail {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid rgba(180,209,195,.2);
+  border-radius: 15px;
+  background: rgba(255,255,255,.035);
+}
+
+.civil-detail h3,
+.civil-detail h4 {
+  color: #e4c992;
+}
+
+.civil-stats {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit, minmax(130px, 1fr)
+  );
+  gap: 10px;
+}
+
+.civil-stats > div {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+  border-radius: 11px;
+  background: rgba(201,177,126,.08);
+}
+
+.civil-stats small,
+.civil-trend small {
+  color: #abc9bf;
+}
+
+.civil-stats strong { font-size: 19px; }
+
+.civil-culture {
+  padding: 13px;
+  border-radius: 10px;
+  background: rgba(201,177,126,.08);
+  overflow-wrap: anywhere;
+}
+
+.civil-trend {
+  display: grid;
+  gap: 11px;
+  margin: 18px 0;
+}
+
+.civil-trend-row {
+  display: grid;
+  grid-template-columns: 76px 1fr 60px 85px;
+  align-items: center;
+  gap: 9px;
+}
+
+.civil-trend-track {
+  height: 13px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #173638;
+}
+
+.civil-trend-bar {
+  height: 100%;
+  border-radius: 20px;
+  background: #b8d6a1;
+}
+
+.civil-policy-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit, minmax(190px, 1fr)
+  );
+  gap: 12px;
+}
+
+.civil-policy {
+  display: grid;
+  align-content: space-between;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid rgba(180,209,195,.2);
+  border-radius: 13px;
+  background: #173638;
+}
+
+.civil-detail button {
+  padding: 10px 14px;
+  border: 1px solid rgba(201,177,126,.45);
+  border-radius: 10px;
+  background: rgba(201,177,126,.13);
+  color: #f3d9a6;
+  cursor: pointer;
+}
+
+.civil-detail button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.civil-detail textarea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 12px;
+  border: 1px solid #56736c;
+  border-radius: 10px;
+  background: #173638;
+  color: #f2f6f1;
+  resize: vertical;
+}
+
+.civil-feedback {
+  margin: 16px 0;
+  padding: 13px;
+  border-left: 3px solid #e4c992;
+  border-radius: 8px;
+  background: rgba(201,177,126,.09);
+}
+
+.civil-notes article {
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid rgba(180,209,195,.16);
+  border-radius: 10px;
+}
+
+.civil-card:focus-visible,
+.civil-detail button:focus-visible,
+.civil-detail textarea:focus-visible {
+  outline: 2px solid #e4c992;
+  outline-offset: 2px;
+}
+
+@media (max-width: 550px) {
+  .civil-trend-row {
+    grid-template-columns: 65px 1fr 45px;
+  }
+
+  .civil-trend-row small:last-child {
+    grid-column: 2 / -1;
+  }
+}

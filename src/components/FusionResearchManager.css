@@ -1,0 +1,42 @@
+.fusion-manager {
+  margin: 22px 0;
+  padding: 24px;
+  border: 1px solid rgba(201,177,126,.35);
+  border-radius: 20px;
+  background: rgba(12,35,37,.94);
+  color: #ecf4ee;
+}
+.fusion-manager h2 { margin: 0 0 8px; }
+.fusion-panel {
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid rgba(180,209,195,.18);
+  border-radius: 14px;
+  background: rgba(255,255,255,.035);
+}
+.fusion-panel h3 { margin-top: 0; color: #e4c992; }
+.fusion-panel label {
+  display: block;
+  margin-bottom: 12px;
+}
+.fusion-panel select, .fusion-panel input {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  background: #173638;
+  color: #fff;
+  border: 1px solid #45655e;
+  border-radius: 6px;
+}
+.fusion-panel button {
+  padding: 10px 14px;
+  background: rgba(201,177,126,.13);
+  color: #f3d9a6;
+  border: 1px solid rgba(201,177,126,.45);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.fusion-panel button:hover {
+  background: rgba(201,177,126,.23);
+}

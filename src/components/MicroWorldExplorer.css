@@ -1,0 +1,61 @@
+
+.micro-world {
+  margin: 24px 0;
+  padding: 24px;
+  border-radius: 20px;
+  background: #153538;
+  border: 1px solid #617c70;
+  color: #eef5ef;
+}
+
+.micro-world h2,
+.micro-world h3 {
+  color: #e4c992;
+}
+
+.micro-world > p {
+  line-height: 1.8;
+  color: #bfd5cb;
+}
+
+.micro-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(180px, 1fr)
+  );
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.micro-grid article {
+  padding: 16px;
+  border-radius: 12px;
+  background: #214447;
+}
+
+.micro-grid p {
+  margin: 9px 0;
+}
+
+.micro-action {
+  margin-top: 20px;
+  padding: 18px;
+  border-radius: 12px;
+  background: #214447;
+}
+
+.micro-action button {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 9px;
+  background: #e4c992;
+  color: #173638;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.micro-action button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

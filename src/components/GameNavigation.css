@@ -1,0 +1,234 @@
+
+/* 【AI 參與】遊戲首頁與導覽樣式 */
+
+.game-navigation {
+  margin: 24px 0;
+  color: #edf5ef;
+  scroll-margin-top: 20px;
+}
+
+.game-hero {
+  padding: 42px 24px;
+  border-radius: 24px;
+  background:
+    radial-gradient(
+      circle at 80% 15%,
+      rgba(201,177,126,.2),
+      transparent 40%
+    ),
+    linear-gradient(145deg, #102d32, #21483f);
+  border: 1px solid rgba(201,177,126,.35);
+  text-align: center;
+}
+
+.game-hero-mark {
+  color: #e4c992;
+  font-size: 36px;
+}
+
+.game-hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #d8c18f;
+}
+
+.game-hero h1 {
+  margin: 12px 0;
+  font-size: clamp(28px, 5vw, 44px);
+  color: #f3e4be;
+}
+
+.game-hero-motto {
+  font-size: 18px;
+  color: #e4c992;
+}
+
+.game-hero-description {
+  max-width: 620px;
+  margin: 18px auto;
+  line-height: 1.9;
+  color: #c0d6cd;
+}
+
+.game-world-status {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.game-world-status span {
+  padding: 9px 14px;
+  border-radius: 30px;
+  background: rgba(255,255,255,.09);
+  font-size: 13px;
+}
+
+.game-area-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  padding: 15px 0;
+}
+
+.game-area-nav button {
+  padding: 11px 15px;
+  border: 1px solid #42645e;
+  border-radius: 11px;
+  background: #18383a;
+  color: #e8f2ec;
+  cursor: pointer;
+}
+
+.game-area-nav button.selected {
+  background: #d9c08a;
+  color: #183638;
+  border-color: #d9c08a;
+  font-weight: bold;
+}
+
+.game-home,
+.game-area-intro {
+  padding: 24px;
+  border: 1px solid rgba(201,177,126,.3);
+  border-radius: 18px;
+  background: #102c30;
+}
+
+.game-home-intro {
+  text-align: center;
+  padding: 12px 0 25px;
+}
+
+.game-home-intro h2,
+.game-home h3,
+.game-area-intro h2 {
+  color: #e4c992;
+}
+
+.game-home-intro p,
+.game-area-intro p {
+  color: #b9d3c9;
+  line-height: 1.8;
+}
+
+.game-start-button {
+  margin-top: 10px;
+  padding: 13px 24px;
+  border: 0;
+  border-radius: 11px;
+  background: #e4c992;
+  color: #173638;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.game-home-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit, minmax(185px, 1fr)
+  );
+  gap: 12px;
+}
+
+.game-home-card {
+  display: grid;
+  justify-items: start;
+  gap: 12px;
+  min-height: 160px;
+  padding: 19px;
+  border: 1px solid #45655e;
+  border-radius: 15px;
+  background: #193b3c;
+  color: #f0f4ee;
+  text-align: left;
+  cursor: pointer;
+}
+
+.game-home-card:hover {
+  background: #28504b;
+}
+
+.game-card-icon {
+  font-size: 30px;
+}
+
+.game-home-card small {
+  color: #b9d3c9;
+  line-height: 1.6;
+}
+
+.game-area-intro {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.game-area-intro > span {
+  font-size: 38px;
+}
+
+.game-area-intro h2 {
+  margin: 0;
+}
+
+.game-navigation button:focus-visible {
+  outline: 2px solid #f0d9a2;
+  outline-offset: 3px;
+}
+
+/*
+ * 五大區域切換：
+ * 僅控制主要區域的顯示。
+ * 原有世界控制器、歷史管理等工具保留。
+ */
+
+body[data-game-area] .micro-explorer,
+body[data-game-area] .creature-book,
+body[data-game-area] .civil-observatory,
+body[data-game-area] .anomaly-explorer,
+body[data-game-area] .research-archive {
+  display: none;
+}
+
+body[data-game-area="micro"] .micro-explorer {
+  display: block;
+}
+
+body[data-game-area="creatures"] .creature-book {
+  display: block;
+}
+
+body[data-game-area="civilization"] .civil-observatory {
+  display: block;
+}
+
+body[data-game-area="exploration"] .anomaly-explorer {
+  display: block;
+}
+
+body[data-game-area="research"] .research-archive {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .game-hero {
+    padding: 28px 16px;
+  }
+
+  .game-area-nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .game-area-nav button {
+    font-size: 12px;
+    padding: 10px 7px;
+  }
+
+  .game-home,
+  .game-area-intro {
+    padding: 16px;
+  }
+}

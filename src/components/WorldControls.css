@@ -1,0 +1,297 @@
+/* ============================================================
+   《異界生態觀測局》世界控制區樣式
+
+   【AI 參與說明】
+   ChatGPT 協助設計 CSS 版面與視覺樣式。
+   ============================================================ */
+
+.world-controls {
+  margin-top: 42px;
+  padding: 28px;
+  border: 1px solid rgba(170, 208, 193, 0.2);
+  border-radius: 20px;
+  background: rgba(13, 35, 43, 0.82);
+  color: #e8f1ec;
+}
+
+.world-controls-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.world-controls-heading h2 {
+  margin: 6px 0;
+  font-size: clamp(22px, 3vw, 30px);
+  color: #f0d9a1;
+}
+
+.world-controls-kicker {
+  margin: 0;
+  color: #83c7b6;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.world-controls-description {
+  color: #b5c9c4;
+}
+
+.world-running-badge {
+  padding: 9px 14px;
+  border-radius: 999px;
+  background: rgba(155, 166, 167, 0.12);
+  color: #b9c5c6;
+  font-size: 13px;
+}
+
+.world-running-badge.active {
+  background: rgba(87, 189, 145, 0.15);
+  color: #8ce0b1;
+}
+
+.world-time-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 25px 0;
+  padding: 24px;
+  border-radius: 14px;
+  background: rgba(4, 21, 28, 0.6);
+}
+
+.world-time-display span {
+  color: #b2c8c3;
+  font-size: 14px;
+}
+
+.world-time-display strong {
+  color: #f3dda5;
+  font-size: clamp(28px, 5vw, 42px);
+}
+
+.world-control-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.world-control-buttons button {
+  flex: 1 1 140px;
+  padding: 12px 15px;
+  border: 1px solid rgba(149, 196, 177, 0.3);
+  border-radius: 10px;
+  background: #1b514d;
+  color: #eef7ef;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.world-control-buttons button:hover:not(:disabled) {
+  background: #286b61;
+}
+
+.world-control-buttons button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.world-control-buttons .reset-button {
+  background: #3b3a38;
+}
+
+.world-data-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.world-data-card,
+.world-population-card {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 17px;
+  border: 1px solid rgba(156, 193, 177, 0.15);
+  border-radius: 12px;
+  background: rgba(8, 26, 34, 0.6);
+}
+
+.world-data-card span,
+.world-population-card span {
+  color: #b5cbc4;
+  font-size: 13px;
+}
+
+.world-data-card strong,
+.world-population-card strong {
+  color: #f2e0b5;
+  font-size: 25px;
+}
+
+.world-data-card small,
+.world-population-card small {
+  color: #8fb0a8;
+}
+
+.world-population-section {
+  margin-top: 30px;
+}
+
+.world-population-section h3 {
+  color: #e9d6a7;
+  font-size: 18px;
+}
+
+.world-population-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.world-simulation-note {
+  margin-top: 25px;
+  color: #8fa7a3;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+@media (max-width: 850px) {
+  .world-data-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .world-population-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .world-controls {
+    padding: 18px;
+  }
+
+  .world-data-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .world-population-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+/* ============================================================
+   玩家環境干預控制台
+
+   【AI 參與說明】
+   ChatGPT 協助設計 CSS 樣式與響應式版面
+   ============================================================ */
+
+.environment-intervention {
+  margin-top: 26px;
+  padding: 22px;
+  border: 1px solid rgba(137, 197, 174, 0.2);
+  border-radius: 14px;
+  background: rgba(6, 27, 34, 0.65);
+}
+
+.environment-intervention-heading h3 {
+  margin: 7px 0;
+  color: #efd9a6;
+  font-size: 19px;
+}
+
+.environment-intervention-heading p:last-child {
+  color: #a9c6bc;
+  font-size: 13px;
+}
+
+.environment-slider-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 22px;
+}
+
+.environment-slider-item {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 18px;
+  border-radius: 12px;
+  background: rgba(12, 43, 47, 0.8);
+}
+
+.environment-slider-item > span {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #c0d6cf;
+  font-size: 14px;
+}
+
+.environment-slider-item strong {
+  color: #f2dfa9;
+}
+
+.environment-slider-item input[type="range"] {
+  width: 100%;
+  accent-color: #75c6a8;
+  cursor: pointer;
+}
+
+.environment-slider-item input:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.environment-intervention-footer {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 22px;
+  flex-wrap: wrap;
+}
+
+.environment-intervention-footer button {
+  padding: 12px 20px;
+  border: 1px solid rgba(145, 205, 176, 0.4);
+  border-radius: 10px;
+  background: #286c5b;
+  color: #f4f7ef;
+  cursor: pointer;
+}
+
+.environment-intervention-footer button:hover:not(:disabled) {
+  background: #36816d;
+}
+
+.environment-intervention-footer button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.environment-intervention-footer p {
+  flex: 1;
+  min-width: 200px;
+  color: #9ebbb2;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+@media (max-width: 650px) {
+  .environment-slider-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .environment-intervention {
+    padding: 16px;
+  }
+}

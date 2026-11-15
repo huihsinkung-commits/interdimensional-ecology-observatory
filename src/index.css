@@ -1,0 +1,60 @@
+/* ================================================
+   《異界生態觀測局》全域樣式
+   AI 協助產生：ChatGPT
+   ================================================ */
+
+/* 使用 border-box，讓元素尺寸更容易計算 */
+* {
+  box-sizing: border-box;
+}
+
+/* 設定網站基礎字體與背景 */
+:root {
+  font-family:
+    "Noto Sans TC",
+    "Microsoft JhengHei",
+    system-ui,
+    sans-serif;
+
+  color: #eee9dc;
+  background: #101c22;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 頁面基本設定 */
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(47, 95, 100, 0.22),
+      transparent 50%
+    ),
+    #101c22;
+}
+
+/* 避免圖片超出容器 */
+img {
+  max-width: 100%;
+}
+
+/* 統一標題的行高 */
+h1, h2, h3 {
+  line-height: 1.4;
+}
+
+/* 統一超連結顏色 */
+a {
+  color: inherit;
+}
+
+/* 讓 React 根元素至少佔滿畫面高度 */
+#root {
+  min-height: 100vh;
+}

@@ -1,0 +1,131 @@
+
+/* 【AI 參與】研究與歷史檔案介面 */
+
+.research-archive {
+  margin: 24px 0;
+  padding: 24px;
+  border: 1px solid rgba(201,177,126,.35);
+  border-radius: 22px;
+  background: rgba(12,35,37,.95);
+  color: #ecf4ee;
+}
+
+.research-header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.research-header h2 {
+  margin: 0 0 8px;
+}
+
+.research-archive p {
+  color: #abc9bf;
+  line-height: 1.7;
+}
+
+.research-world {
+  display: grid;
+  gap: 5px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: rgba(201,177,126,.12);
+}
+
+.research-world small {
+  color: #abc9bf;
+}
+
+.research-summary {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit, minmax(125px, 1fr)
+  );
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.research-summary > div {
+  display: grid;
+  gap: 8px;
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(201,177,126,.09);
+}
+
+.research-summary small {
+  color: #abc9bf;
+}
+
+.research-summary strong {
+  color: #e4c992;
+  font-size: 25px;
+}
+
+.research-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.research-actions button {
+  padding: 12px 16px;
+  border: 1px solid rgba(201,177,126,.45);
+  border-radius: 10px;
+  background: rgba(201,177,126,.13);
+  color: #f3d9a6;
+  cursor: pointer;
+}
+
+.research-section {
+  margin-top: 22px;
+  padding: 18px;
+  border: 1px solid rgba(180,209,195,.18);
+  border-radius: 15px;
+  background: rgba(255,255,255,.035);
+}
+
+.research-section h3 {
+  color: #e4c992;
+}
+
+.research-timeline,
+.research-comparison,
+.research-records {
+  display: grid;
+  gap: 10px;
+}
+
+.research-timeline article,
+.research-comparison-row,
+.research-records article {
+  display: grid;
+  gap: 8px;
+  padding: 13px;
+  border: 1px solid rgba(180,209,195,.16);
+  border-radius: 11px;
+  background: rgba(255,255,255,.025);
+}
+
+.research-timeline small,
+.research-comparison small,
+.research-records small {
+  color: #abc9bf;
+}
+
+.research-timeline span {
+  color: #e4c992;
+  font-size: 12px;
+}
+
+.research-records p {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.research-actions button:focus-visible {
+  outline: 2px solid #e4c992;
+  outline-offset: 3px;
+}

@@ -1,0 +1,203 @@
+
+/* 【AI 參與】異界生物圖鑑介面 */
+
+.creature-book {
+  margin: 24px 0;
+  padding: 24px;
+  border: 1px solid rgba(201,177,126,.35);
+  border-radius: 22px;
+  background: rgba(12,35,37,.95);
+  color: #ecf4ee;
+}
+
+.creature-heading {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.creature-heading h2 { margin: 0 0 8px; }
+
+.creature-heading p,
+.creature-book p {
+  color: #abc9bf;
+  line-height: 1.7;
+}
+
+.creature-world {
+  display: grid;
+  gap: 5px;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(201,177,126,.12);
+}
+
+.creature-world small { color: #abc9bf; }
+
+.creature-summary,
+.creature-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.creature-summary span {
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(201,177,126,.1);
+}
+
+.creature-book input,
+.creature-book select,
+.creature-book textarea {
+  padding: 11px;
+  border: 1px solid #56736c;
+  border-radius: 10px;
+  background: #173638;
+  color: #f2f6f1;
+}
+
+.creature-filters input {
+  flex: 1;
+  min-width: 150px;
+}
+
+.creature-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit, minmax(155px, 1fr)
+  );
+  gap: 12px;
+}
+
+.creature-card {
+  display: grid;
+  justify-items: start;
+  gap: 9px;
+  padding: 17px;
+  border: 1px solid #45655e;
+  border-radius: 15px;
+  background: #173638;
+  color: #ecf4ee;
+  cursor: pointer;
+  text-align: left;
+}
+
+.creature-card.active {
+  border-color: #e4c992;
+  background: #254744;
+}
+
+.creature-card small { color: #abc9bf; }
+
+.creature-icon { font-size: 32px; }
+
+.creature-details {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid rgba(180,209,195,.2);
+  border-radius: 15px;
+  background: rgba(255,255,255,.035);
+}
+
+.creature-details h3,
+.creature-details h4 {
+  color: #e4c992;
+}
+
+.creature-stats {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit, minmax(130px, 1fr)
+  );
+  gap: 10px;
+}
+
+.creature-stats > div {
+  display: grid;
+  gap: 9px;
+  padding: 14px;
+  border-radius: 11px;
+  background: rgba(201,177,126,.08);
+}
+
+.creature-stats small,
+.creature-trend small {
+  color: #abc9bf;
+}
+
+.creature-stats strong {
+  font-size: 19px;
+}
+
+.creature-trend {
+  display: grid;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.creature-trend-item {
+  display: grid;
+  grid-template-columns: 80px 1fr 65px;
+  align-items: center;
+  gap: 10px;
+}
+
+.creature-trend-track {
+  height: 13px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #173638;
+}
+
+.creature-trend-bar {
+  height: 100%;
+  border-radius: 20px;
+  background: #9dc8aa;
+}
+
+.creature-details textarea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  resize: vertical;
+  margin-bottom: 12px;
+}
+
+.creature-details button {
+  padding: 11px 16px;
+  border: 1px solid rgba(201,177,126,.45);
+  border-radius: 10px;
+  background: rgba(201,177,126,.13);
+  color: #f3d9a6;
+  cursor: pointer;
+}
+
+.creature-details button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.creature-card:focus-visible,
+.creature-details button:focus-visible,
+.creature-book input:focus-visible,
+.creature-book select:focus-visible,
+.creature-book textarea:focus-visible {
+  outline: 2px solid #e4c992;
+  outline-offset: 2px;
+}
+
+.creature-notes article {
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid rgba(180,209,195,.16);
+  border-radius: 10px;
+}
+
+@media (max-width: 520px) {
+  .creature-trend-item {
+    grid-template-columns: 65px 1fr 48px;
+  }
+}

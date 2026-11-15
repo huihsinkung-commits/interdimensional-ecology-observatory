@@ -1,0 +1,148 @@
+
+.parallel-manager {
+  margin: 22px 0;
+  padding: 24px;
+  border: 1px solid rgba(201,177,126,.35);
+  border-radius: 20px;
+  background: rgba(12,35,37,.94);
+  color: #ecf4ee;
+}
+.parallel-heading {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.parallel-manager h2 { margin: 0 0 8px; }
+.parallel-heading p {
+  margin: 0;
+  color: #abc9bf;
+}
+.parallel-heading span {
+  padding: 6px 12px;
+  border: 1px solid rgba(201,177,126,.4);
+  border-radius: 999px;
+  color: #f3d9a6;
+  font-size: 13px;
+}
+.parallel-create {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.parallel-manager input {
+  flex: 1;
+  min-width: 180px;
+  padding: 10px;
+  border: 1px solid #56736c;
+  border-radius: 9px;
+  background: #173638;
+  color: #f2f6f1;
+}
+.parallel-manager select {
+  padding: 6px 10px;
+  border: 1px solid #56736c;
+  border-radius: 8px;
+  background: #173638;
+  color: #f2f6f1;
+}
+.parallel-manager button {
+  padding: 10px 14px;
+  border: 1px solid rgba(201,177,126,.45);
+  border-radius: 10px;
+  background: rgba(201,177,126,.13);
+  color: #f3d9a6;
+  cursor: pointer;
+}
+.parallel-manager button:hover {
+  background: rgba(201,177,126,.23);
+}
+.parallel-branch-list {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.parallel-branch {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 14px; 
+  border: 1px solid rgba(180,209,195,.18);
+  border-radius: 12px;
+  background: rgba(255,255,255,.02);
+}
+.parallel-branch.active {
+  border-color: #e4c992;
+  background: rgba(201,177,126,.06);
+}
+.parallel-branch-details {
+  display: grid;
+  gap: 6px;
+}
+.parallel-branch-details strong {
+  font-size: 16px;
+}
+.parallel-branch-details small {
+  color: #abc9bf;
+}
+.parallel-active-label {
+  font-size: 12px;
+  color: #e4c992;
+}
+.parallel-branch-actions {
+  display: flex;
+  align-items: center; 
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.parallel-branch-actions label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #abc9bf;
+}
+.parallel-comparison {
+  padding: 18px;
+  border: 1px solid rgba(180,209,195,.22);
+  border-radius: 14px;
+  background: rgba(255,255,255,.035);
+}
+.parallel-comparison h3 {
+  margin-top: 0;
+  color: #e4c992;
+}
+.parallel-comparison-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.parallel-comparison-controls label {
+  display: grid;
+  gap: 6px;
+  flex: 1;
+  min-width: 150px;
+}
+.parallel-comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.parallel-comparison-table th,
+.parallel-comparison-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid rgba(180,209,195,.15);
+}
+.parallel-comparison-table th { color: #e4c992; }
+.parallel-manager button:focus-visible,
+.parallel-manager input:focus-visible,
+.parallel-manager select:focus-visible {
+  outline: 2px solid #e4c992;
+  outline-offset: 2px;
+}

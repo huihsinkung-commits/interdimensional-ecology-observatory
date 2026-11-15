@@ -1,0 +1,143 @@
+{
+  "project": "異界生態觀測局",
+  "checked_at": "2026-11-15T09:18:34.373557",
+  "passed": 24,
+  "total": 27,
+  "checks": [
+    {
+      "name": "微型世界",
+      "passed": true,
+      "detail": "MicroWorldExplorer.tsx"
+    },
+    {
+      "name": "異界生物圖鑑",
+      "passed": true,
+      "detail": "CreatureEncyclopedia.tsx"
+    },
+    {
+      "name": "文明觀測所",
+      "passed": true,
+      "detail": "CivilizationObservatory.tsx"
+    },
+    {
+      "name": "探索與異常事件",
+      "passed": true,
+      "detail": "AnomalyExplorer.tsx"
+    },
+    {
+      "name": "研究與歷史檔案",
+      "passed": true,
+      "detail": "ResearchArchive.tsx"
+    },
+    {
+      "name": "首頁與區域導覽",
+      "passed": true,
+      "detail": "GameNavigation.tsx"
+    },
+    {
+      "name": "微型世界已掛載",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "異界生物圖鑑已掛載",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "文明觀測所已掛載",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "探索與異常事件已掛載",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "研究與歷史檔案已掛載",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "首頁與區域導覽已掛載",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "世界共享狀態",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "世界模擬引擎",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "世界存檔系統",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "世界事件系統",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "浮島視覺",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "歷史管理",
+      "passed": false,
+      "detail": ""
+    },
+    {
+      "name": "平行世界管理",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "世界融合研究",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "世界存檔讀取介面",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "世界存檔寫入介面",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "正式建置成功",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "具有 build 指令",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Vite 設定檔存在",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "已明確設定 Vite base",
+      "passed": false,
+      "detail": "GitHub Pages 專案網址通常需要正確的 base 路徑。"
+    },
+    {
+      "name": "AGENTS.md 已存在",
+      "passed": false,
+      "detail": ""
+    }
+  ]
+}
