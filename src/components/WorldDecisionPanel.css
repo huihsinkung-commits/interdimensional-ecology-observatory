@@ -1,0 +1,55 @@
+
+.world-decision-panel {
+  margin: 24px 0;
+  padding: 24px;
+  border: 1px solid #557568;
+  border-radius: 18px;
+  background: #102c30;
+  color: #edf5ef;
+}
+
+.world-decision-panel h2 {
+  color: #e4c992;
+}
+
+.world-decision-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.world-decision-grid button {
+  display: grid;
+  gap: 10px;
+  padding: 20px;
+  border: 1px solid #45655e;
+  border-radius: 12px;
+  background: #193b3c;
+  color: #edf5ef;
+  text-align: left;
+  cursor: pointer;
+}
+
+.world-decision-grid button:hover:not(:disabled) {
+  background: #28504b;
+}
+
+.world-decision-grid button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.world-decision-grid span {
+  font-size: 28px;
+}
+
+.world-decision-grid small {
+  color: #b9d3c9;
+  line-height: 1.6;
+}
+
+.world-decision-message {
+  margin-top: 16px;
+  color: #e4c992;
+}
