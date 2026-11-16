@@ -94,5 +94,5 @@ export function createInitialWorld(): WorldState {
         culture: '崇尚自然循環與星象觀測',
       },
     ],
-  } 
+  }
 }

@@ -3,10 +3,10 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/interdimensional-ecology-observatory/',
   // 允許本次 Google Colab 預覽主機
   server: {
-    allowedHosts: ['m-s-ase1a7-3iup0frp6mrqc.asia-east1-a.c.codatalab-user-runtimes.internal'],
+    allowedHosts: ['m-s-ase1a7-3iup0frp6mrqc.asia-east1-a.c.codatalab-user-runtimes.internal',
+      'm-s-use4a5-2m0yd0ow3crzp.us-east4-a.c.codatalab-user-runtimes.internal'],
   },
   plugins: [react()],
 })

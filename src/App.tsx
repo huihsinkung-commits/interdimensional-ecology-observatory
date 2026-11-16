@@ -1,4 +1,6 @@
 import GameNavigation from './components/GameNavigation'
+import CivilizationObservatory from './components/CivilizationObservatory'
+import ParallelWorldManager from './components/ParallelWorldManager'
 import WorldEventPanel from './components/WorldEventPanel'
 import { WorldProvider } from './context/WorldContext'
 import LumiaIsland from './components/LumiaIsland'
@@ -101,8 +103,11 @@ function App() {
 
       {/* 主要內容區域 */}
       <main className="main-content">
+      <LumiaIsland />
       <GameNavigation />
-        <LumiaIsland />
+      <CivilizationObservatory />
+      <ParallelWorldManager />
+
 
         {/* 歡迎區：呈現世界觀與核心理念 */}
         <section className="welcome-section">

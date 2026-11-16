@@ -98,7 +98,8 @@ function validWorld(value: unknown): value is WorldState {
     object(item) &&
     typeof item.id === 'string' &&
     typeof item.name === 'string' &&
-    numeric(item, ['population', 'technology', 'culture']) &&
+    numeric(item, ['population', 'technology']) &&
+    typeof item.culture === 'string' &&
     ['tribal', 'village', 'city', 'kingdom']
       .includes(String(item.stage))
   )

@@ -62,7 +62,7 @@ export function calculateIslandVisualState(
         ? 0
         : clamp(
             Math.ceil(item.population / 60),
-            1, 
+            1,
             6
           )
   }

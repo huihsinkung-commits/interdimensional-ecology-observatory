@@ -285,7 +285,7 @@ export function advanceWorld(
       )
 
       // 環境與食物共同影響族群成長率
-      const growthRate = 
+      const growthRate =
         0.06 * temperatureFactor * foodFactor -
         0.035 * (1 - temperatureFactor) -
         0.045 * (1 - foodFactor)
@@ -325,7 +325,7 @@ export function advanceWorld(
     civilization => {
 
       // 文明人口受到食物、水資源與穩定度影響
-      const livingConditions = 
+      const livingConditions =
         (
           foodFactor +
           environment.water / 100 +
@@ -333,13 +333,13 @@ export function advanceWorld(
         ) / 3
 
       // 良好環境下人口成長，惡劣環境下人口可能下降
-      const populationGrowthRate = 
+      const populationGrowthRate =
         (livingConditions - 0.45) * 0.035
 
       const population = Math.max(
         0,
         Math.round(
-          civilization.population * 
+          civilization.population *
           (1 + populationGrowthRate)
         )
       )

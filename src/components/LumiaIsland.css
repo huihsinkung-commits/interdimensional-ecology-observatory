@@ -231,3 +231,90 @@
     animation: none;
   }
 }
+
+
+/* ============================================================
+   第五章 5-5：遊戲主場景布局優化
+
+   【AI 參與說明】
+   ChatGPT 協助撰寫 CSS
+   ============================================================ */
+
+.lumia-scene {
+  margin: 12px 0 28px;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 28px;
+  border: 1px solid rgba(180, 218, 204, 0.25);
+  background: #18363b;
+}
+
+.lumia-scene-heading {
+  padding: 24px 28px 12px;
+  margin-bottom: 0;
+}
+
+.lumia-scene-frame {
+  margin: 0 14px 14px;
+  border-radius: 22px;
+}
+
+.lumia-scene-frame svg {
+  width: 100%;
+  height: auto;
+}
+
+.lumia-scene-note {
+  padding-bottom: 15px;
+}
+
+@media (max-width: 650px) {
+  .lumia-scene {
+    border-radius: 18px;
+  }
+
+  .lumia-scene-heading {
+    padding: 18px 16px 10px;
+  }
+
+  .lumia-scene-frame {
+    margin: 0 8px 8px;
+    border-radius: 14px;
+  }
+}
+
+
+/* ============================================================
+   第五章 5-16A：森林生長動畫
+
+   【AI 參與說明】
+   ChatGPT 協助設計 SVG 樹木生長動畫
+   ============================================================ */
+
+.lumia-tree-grow {
+  animation: lumiaTreeGrow 1.8s ease-out both;
+  transform-box: fill-box;
+  transform-origin: center bottom;
+}
+
+@keyframes lumiaTreeGrow {
+  from {
+    opacity: 0;
+    scale: 0.2;
+  }
+
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+.lumia-forest-status {
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lumia-tree-grow {
+    animation: none;
+  }
+}

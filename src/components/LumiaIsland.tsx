@@ -17,7 +17,7 @@ type TreeProps = {
 
 function Tree({ x, y, scale = 1 }: TreeProps) {
   return (
-    <g transform={`translate(${x} ${y}) scale(${scale})`}>
+    <g className="lumia-tree-grow" transform={`translate(${x} ${y}) scale(${scale})`}>
       <ellipse
         cx="5" cy="9" rx="24" ry="8"
         fill="#254e43" opacity="0.18"
@@ -135,6 +135,7 @@ const trees = [
   [705, 360, 0.9],
   [760, 410, 0.85],
   [460, 455, 0.9],
+  [225, 345, 0.72],
 ] as const
 
 
@@ -392,6 +393,31 @@ export default function LumiaIsland() {
                 scale={scale}
               />
             ))}
+
+            {/* 森林健康度狀態 */}
+            <g className="lumia-forest-status">
+              <rect
+                x="35" y="535"
+                width="225" height="52"
+                rx="12"
+                fill="#173f35"
+                opacity="0.82"
+              />
+              <text
+                x="49" y="556"
+                fill="#ffffff"
+                fontSize="15"
+              >
+                {`森林健康度：${Math.round(visual.vegetationHealth)}%`}
+              </text>
+              <text
+                x="49" y="576"
+                fill="#d5f0dc"
+                fontSize="13"
+              >
+                {`目前樹木：${Math.min(visual.treeCount, trees.length)} 棵`}
+              </text>
+            </g>
 
             {/* 聚落：依文明人口動態顯示 */}
             <g className="lumia-cottage-group">
