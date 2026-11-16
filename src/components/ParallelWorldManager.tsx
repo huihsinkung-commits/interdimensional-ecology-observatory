@@ -24,6 +24,7 @@ export default function ParallelWorldManager() {
   } = useWorld()
 
   const [name, setName] = useState('')
+  const [feedback, setFeedback] = useState('')
   const [leftId, setLeftId] = useState('main')
   const [rightId, setRightId] = useState('')
 
@@ -59,6 +60,19 @@ export default function ParallelWorldManager() {
         <span>{branches.length} / 8 個世界</span>
       </header>
 
+      {feedback && (
+        <p role="status" aria-live="polite"
+          style={{
+            padding: '12px 16px',
+            border: '1px solid #55786d',
+            borderRadius: '10px',
+            color: '#e9d6a8',
+          }}
+        >
+          {feedback}
+        </p>
+      )}
+
       <div className="parallel-create">
         <input
           aria-label="平行世界名稱"
@@ -71,8 +85,16 @@ export default function ParallelWorldManager() {
           type="button"
           disabled={branches.length >= 8}
           onClick={() => {
-            createBranch(name)
+            if (branches.length >= 8) {
+              setFeedback('已達 8 個世界的上限')
+              return
+            }
+            const requestedName = name.trim()
+            createBranch(requestedName)
             setName('')
+            setFeedback(
+              `已送出建立分支：${requestedName || '自動命名分支'}`
+            )
           }}
         >
           從目前世界建立分支
@@ -107,7 +129,10 @@ export default function ParallelWorldManager() {
               <button
                 type="button"
                 disabled={branch.id === activeBranchId}
-                onClick={() => switchBranch(branch.id)}
+                onClick={() => {
+                  switchBranch(branch.id)
+                  setFeedback(`已送出切換至：${branch.name}`)
+                }}
               >
                 切換
               </button>
@@ -167,7 +192,7 @@ export default function ParallelWorldManager() {
                   {branch.name}
                 </option>
               ))}
-            </select> 
+            </select>
           </label>
         </div>
         <table className="parallel-comparison-table">

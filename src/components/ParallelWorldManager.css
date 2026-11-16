@@ -71,7 +71,7 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 12px;
-  padding: 14px; 
+  padding: 14px;
   border: 1px solid rgba(180,209,195,.18);
   border-radius: 12px;
   background: rgba(255,255,255,.02);
@@ -96,7 +96,7 @@
 }
 .parallel-branch-actions {
   display: flex;
-  align-items: center; 
+  align-items: center;
   flex-wrap: wrap;
   gap: 10px;
 }

@@ -20,7 +20,7 @@ export default function FusionResearchManager() {
   const active = branches.find(b => b.id === activeBranchId) ?? branches[0]
   const otherBranches = branches.filter(b => b.id !== idA)
 
-  function handleFuse() { 
+  function handleFuse() {
     const branchA = branches.find(b => b.id === idA)
     const branchB = branches.find(b => b.id === idB)
     if (!branchA || !branchB) return
@@ -41,7 +41,7 @@ export default function FusionResearchManager() {
         <label>
           來源世界 A
           <select value={idA} onChange={e => setIdA(e.target.value)}>
-            {branches.map(b => ( 
+            {branches.map(b => (
               <option key={b.id} value={b.id}>{b.name}</option>
             ))}
           </select>
@@ -50,7 +50,7 @@ export default function FusionResearchManager() {
           來源世界 B
           <select value={idB} onChange={e => setIdB(e.target.value)}>
             <option value="">請選擇世界 B</option>
-            {otherBranches.map(b => ( 
+            {otherBranches.map(b => (
               <option key={b.id} value={b.id}>{b.name}</option>
             ))}
           </select>

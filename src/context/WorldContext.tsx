@@ -89,7 +89,7 @@ function makeNode(
   world: WorldState,
   history: WorldEvent[]
 ): HistoryNode {
-  return { 
+  return {
     id: crypto.randomUUID(),
     name,
     kind,
@@ -124,7 +124,7 @@ function evolve(game: GameSave, nextWorld: WorldState): GameSave {
   return { world: nextWorld, history, historyNodes: nodes }
 }
 
-export function WorldProvider({ children }: { children: ReactNode }) { 
+export function WorldProvider({ children }: { children: ReactNode }) {
   const [game, setGame] = useState<ParallelSave>(newGame)
 
   const active = game.branches.find(b => b.id === game.activeBranchId) ?? game.branches[0]
@@ -253,21 +253,21 @@ export function WorldProvider({ children }: { children: ReactNode }) {
       ...previous,
       branches: previous.branches.map(branch => {
         if (branch.id !== id || branch.archived) return branch
-        let next: GameSave = { 
+        let next: GameSave = {
           world: branch.world,
           history: branch.history,
           historyNodes: branch.historyNodes,
         }
         for (let i = 0; i < branch.speed; i++) {
           next = evolve(next, advanceWorld(next.world))
-        } 
+        }
         return { ...branch, ...next }
       }),
     }))
   }, [])
 
   const toggleNodeProtection = useCallback((id: string) => {
-    updateActive(branch => ({ 
+    updateActive(branch => ({
       ...branch,
       historyNodes: branch.historyNodes.map(n => n.id === id ? { ...n, protected: !n.protected } : n),
     }))
@@ -286,7 +286,7 @@ export function WorldProvider({ children }: { children: ReactNode }) {
   }, [])
 
   const permanentlyDeleteTrashNode = useCallback((id: string) => {
-    updateActive(branch => ({ 
+    updateActive(branch => ({
       ...branch,
       trash: (branch.trash ?? []).filter(item => item.id !== id),
     }))
@@ -306,7 +306,7 @@ export function WorldProvider({ children }: { children: ReactNode }) {
   }, [])
 
   const unarchiveBranch = useCallback((id: string) => {
-    setGame(previous => ({ 
+    setGame(previous => ({
       ...previous,
       branches: previous.branches.map(b => b.id === id ? { ...b, archived: false } : b),
     }))

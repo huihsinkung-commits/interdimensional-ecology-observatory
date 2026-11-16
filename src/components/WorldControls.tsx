@@ -22,10 +22,10 @@ export default function WorldControls() {
   // 世界狀態由 React 管理。
   // 【AI 協助修正】
   // 與露米亞島嶼共用同一份世界資料
-  const { world, setWorld } = useWorld()
+  const { world, setWorld, activeBranchId } = useWorld()
 
   // 是否持續自動演化。
-  const [isRunning, setIsRunning] = useState(false)
+  const isRunning = world.info.status === 'running'
 
   // 【AI 協助設計】
   // 滑桿使用暫存數值
@@ -38,6 +38,16 @@ export default function WorldControls() {
     world.environment.temperature
   )
 
+
+  // 當切換世界或回復歷史狀態時，同步環境控制滑桿
+  useEffect(() => {
+    setDraftRainfall(world.environment.rainfall)
+    setDraftTemperature(world.environment.temperature)
+  }, [
+    activeBranchId,
+    world.environment.rainfall,
+    world.environment.temperature,
+  ])
 
   // ----------------------------------------------------------
   // 自動演化
@@ -65,7 +75,6 @@ export default function WorldControls() {
   // ----------------------------------------------------------
 
   function startWorld() {
-    setIsRunning(true)
     setWorld(previous => ({
       ...previous,
       info: { ...previous.info, status: 'running' },
@@ -73,7 +82,6 @@ export default function WorldControls() {
   }
 
   function pauseWorld() {
-    setIsRunning(false)
     setWorld(previous => ({
       ...previous,
       info: { ...previous.info, status: 'paused' },
@@ -107,7 +115,6 @@ export default function WorldControls() {
   }
 
   function resetWorld() {
-    setIsRunning(false)
 
     const initial = createInitialWorld()
 

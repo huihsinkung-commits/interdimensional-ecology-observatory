@@ -1,90 +1,115 @@
-import GameNavigation from './components/GameNavigation'
-import CivilizationObservatory from './components/CivilizationObservatory'
-import ParallelWorldManager from './components/ParallelWorldManager'
-import WorldEventPanel from './components/WorldEventPanel'
-import { WorldProvider } from './context/WorldContext'
+import { useState } from 'react'
+import { WorldProvider, useWorld } from './context/WorldContext'
+
 import LumiaIsland from './components/LumiaIsland'
 import WorldControls from './components/WorldControls'
+import WorldDecisionPanel from './components/WorldDecisionPanel'
+import WorldInterventionEffect from './components/WorldInterventionEffect'
+import ParallelWorldManager from './components/ParallelWorldManager'
+import CreatureEncyclopedia from './components/CreatureEncyclopedia'
+import CivilizationObservatory from './components/CivilizationObservatory'
+import AnomalyExplorer from './components/AnomalyExplorer'
+import ResearchArchive from './components/ResearchArchive'
+import WorldEventPanel from './components/WorldEventPanel'
+import MicroWorldExplorer from './components/MicroWorldExplorer'
+
 import './App.css'
 
-// 定義六大系統的資料結構
-// TypeScript 可以協助檢查每個系統是否具有必要資訊
-type SystemModule = {
-  id: string
+type Area =
+  | 'control'
+  | 'world'
+  | 'creatures'
+  | 'civilization'
+  | 'exploration'
+  | 'research'
+
+const systems: {
+  id: Area
   symbol: string
   title: string
   description: string
-  status: string
-}
-
-// 六大系統導覽資料
-// 目前只用於首頁展示，尚未建立完整功能頁面
-const systems: SystemModule[] = [
+}[] = [
   {
     id: 'control',
     symbol: '◈',
     title: '觀測總控中心',
-    description: '掌握研究員資訊與世界整體狀態',
-    status: '目前所在',
+    description: '查看世界狀態、資源與研究資訊',
   },
   {
     id: 'world',
     symbol: '◎',
     title: '微型世界',
-    description: '探索世界環境、時間與生態變化',
-    status: '規劃中',
+    description: '探索島嶼、控制時間並干預環境',
   },
   {
     id: 'creatures',
     symbol: '✦',
     title: '異界生物圖鑑',
-    description: '記錄物種特徵、棲地與演化歷程',
-    status: '規劃中',
+    description: '觀察物種、族群與生態變化',
   },
   {
     id: 'civilization',
     symbol: '⌘',
     title: '文明觀測所',
-    description: '觀察聚落、文化與文明的發展',
-    status: '規劃中',
+    description: '研究聚落、文化與科技發展',
   },
   {
     id: 'exploration',
     symbol: '◇',
     title: '探索與異常事件',
-    description: '發現未知現象與特殊研究事件',
-    status: '規劃中',
+    description: '探索未知現象與世界事件',
   },
   {
     id: 'research',
     symbol: '▤',
     title: '研究與歷史檔案',
-    description: '整理觀測日誌、實驗與歷史紀錄',
-    status: '規劃中',
+    description: '保存研究成果並追溯世界歷史',
   },
 ]
 
-// 首頁示範統計資料
-// 這些數值並非實際模擬結果
-const statistics = [
-  { label: '觀測世界', value: '01' },
-  { label: '示範物種', value: '05' },
-  { label: '研究紀錄', value: '00' },
-]
+function ObservatoryGame() {
+  const { world, branches, activeBranchId } = useWorld()
+  const [area, setArea] = useState<Area>('control')
 
-// React 主要首頁元件
-function App() {
+  const activeBranch = branches.find(
+    branch => branch.id === activeBranchId
+  )
+
+  const population = world.species.reduce(
+    (total, species) => total + species.population,
+    0
+  )
+
+  const civilizationPopulation = world.civilizations.reduce(
+    (total, civilization) =>
+      total + civilization.population,
+    0
+  )
+
+  function navigate(next: Area) {
+    setArea(next)
+
+    window.requestAnimationFrame(() => {
+      document.getElementById('research-content')
+        ?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        })
+    })
+  }
+
+  const selected = systems.find(
+    system => system.id === area
+  )!
+
   return (
-    <WorldProvider>
-      <div className="observatory-app">
+    <div className="observatory-app">
 
-      {/* 網站頂部：品牌與研究員資訊 */}
       <header className="site-header">
         <div className="brand">
           <div className="brand-symbol" aria-hidden="true">
             ◈
           </div>
-
           <div>
             <p className="brand-en">
               INTERDIMENSIONAL ECOLOGY OBSERVATORY
@@ -101,108 +126,34 @@ function App() {
         </div>
       </header>
 
-      {/* 主要內容區域 */}
       <main className="main-content">
-      <LumiaIsland />
-      <GameNavigation />
-      <CivilizationObservatory />
-      <ParallelWorldManager />
 
-
-        {/* 歡迎區：呈現世界觀與核心理念 */}
-        <section className="welcome-section">
+        <section className="demo-hero">
           <p className="eyebrow">
-            OBSERVATION TERMINAL / 001
+            INTERDIMENSIONAL RESEARCH TERMINAL
           </p>
 
-          <h1>歡迎來到異界觀測局</h1>
+          <h1>異界生態觀測局</h1>
 
-          <p className="welcome-description">
-            在未知世界之間展開研究，觀察生命、環境與文明如何彼此影響
+          <p>
+            玩家掌握條件，世界決定反應。
+            觀察生命、文明與環境，
+            透過每一次決策見證不同的未來。
           </p>
 
-          <p className="motto">
-            玩家掌握條件，世界決定反應
-          </p>
-        </section>
-
-        {/* 統計資訊：目前使用示範數據 */}
-        <section
-          className="statistics-grid"
-          aria-label="觀測統計"
-        >
-          {statistics.map((item) => (
-            <article
-              className="stat-card"
-              key={item.label}
-            >
-              <span className="stat-label">
-                {item.label}
-              </span>
-
-              <strong className="stat-value">
-                {item.value}
-              </strong>
-            </article>
-          ))}
-        </section>
-
-        {/* 世界資訊與研究員檔案 */}
-        <section className="overview-grid">
-
-          <article className="panel world-panel">
-            <div className="panel-heading">
-              <span className="section-kicker">
-                WORLD OBSERVATION
-              </span>
-              <span className="status-pill">
-                示範世界
-              </span>
-            </div>
-
-            <div className="world-orb" aria-hidden="true">
-              <div className="orb-inner" />
-            </div>
-
-            <h2>露米亞 · Lumia</h2>
-
-            <p>
-              一個等待研究員展開觀測的微型世界
-              未來將加入環境、物種與文明的動態模擬
-            </p>
-
-            <div className="world-meta">
-              <span>世界狀態</span>
-              <strong>尚未啟動模擬</strong>
-            </div>
-          </article>
-
-          <article className="panel researcher-panel">
-            <span className="section-kicker">
-              RESEARCHER PROFILE
+          <div className="demo-status-line">
+            <span>
+              🌐 {activeBranch?.name ?? world.info.name}
             </span>
-
-            <div className="researcher-avatar" aria-hidden="true">
-              ✧
-            </div>
-
-            <h2>未命名研究員</h2>
-
-            <p>
-              身分：見習異界研究員
-            </p>
-
-            <p>
-              研究專長與個人履歷將在後續階段建立
-            </p>
-
-            <div className="researcher-note">
-              目前為示範檔案，尚未建立帳號系統
-            </div>
-          </article>
+            <span>📅 第 {world.info.time} 天</span>
+            <span>
+              {world.info.status === 'running'
+                ? '▶ 世界運行中'
+                : '⏸ 世界已暫停'}
+            </span>
+          </div>
         </section>
 
-        {/* 六大系統入口：此階段只展示，不假裝已可操作 */}
         <section className="systems-section">
           <div className="section-heading">
             <div>
@@ -211,55 +162,197 @@ function App() {
               </p>
               <h2>六大研究系統</h2>
             </div>
-
             <span className="section-caption">
-              OBSERVATORY MODULES
+              SELECT A RESEARCH DIVISION
             </span>
           </div>
 
           <div className="systems-grid">
-            {systems.map((system) => (
-              <article
-                className="system-card"
+            {systems.map(system => (
+              <button
                 key={system.id}
+                type="button"
+                className={
+                  'system-card demo-system-button' +
+                  (area === system.id
+                    ? ' demo-system-selected'
+                    : '')
+                }
+                onClick={() => navigate(system.id)}
+                aria-pressed={area === system.id}
               >
                 <div className="system-top">
-                  <span
-                    className="system-symbol"
-                    aria-hidden="true"
-                  >
+                  <span className="system-symbol">
                     {system.symbol}
                   </span>
 
                   <span className="module-status">
-                    {system.status}
+                    {area === system.id
+                      ? '目前所在'
+                      : '進入系統'}
                   </span>
                 </div>
 
                 <h3>{system.title}</h3>
                 <p>{system.description}</p>
-              </article>
+              </button>
             ))}
           </div>
         </section>
-            
-      <WorldControls />
-        <WorldEventPanel />
-    </main>
 
-      {/* 網站底部 */}
+        <section
+          id="research-content"
+          className="demo-research-content"
+        >
+          <div className="demo-section-heading">
+            <span className="demo-section-icon">
+              {selected.symbol}
+            </span>
+
+            <div>
+              <p className="section-kicker">
+                ACTIVE RESEARCH DIVISION
+              </p>
+              <h2>{selected.title}</h2>
+              <p>{selected.description}</p>
+            </div>
+          </div>
+
+          {area === 'control' && (
+            <div className="demo-division">
+              <div className="demo-dashboard">
+                <article>
+                  <span>目前世界</span>
+                  <strong>
+                    {activeBranch?.name ?? world.info.name}
+                  </strong>
+                </article>
+
+                <article>
+                  <span>世界時間</span>
+                  <strong>第 {world.info.time} 天</strong>
+                </article>
+
+                <article>
+                  <span>世界分支</span>
+                  <strong>{branches.length}</strong>
+                </article>
+
+                <article>
+                  <span>生物總數</span>
+                  <strong>{population}</strong>
+                </article>
+
+                <article>
+                  <span>文明人口</span>
+                  <strong>{civilizationPopulation}</strong>
+                </article>
+
+                <article>
+                  <span>環境穩定度</span>
+                  <strong>
+                    {world.environment.stability.toFixed(1)}
+                  </strong>
+                </article>
+              </div>
+
+              <div className="demo-resource-panel">
+                <h3>世界資源</h3>
+
+                <div className="demo-resource-grid">
+                  <span>🍎 食物：{world.resources.food}</span>
+                  <span>🪵 木材：{world.resources.wood}</span>
+                  <span>⛏️ 礦物：{world.resources.minerals}</span>
+                  <span>⚡ 能量：{world.resources.energy}</span>
+                  <span>💧 水資源：{world.environment.water}</span>
+                  <span>
+                    🌱 土壤肥沃度：
+                    {world.environment.soilFertility}
+                  </span>
+                </div>
+              </div>
+
+              <div className="demo-quick-actions">
+                <button
+                  type="button"
+                  onClick={() => navigate('world')}
+                >
+                  🌍 前往微型世界
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => navigate('civilization')}
+                >
+                  🏛️ 觀測文明
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => navigate('research')}
+                >
+                  📜 查看歷史
+                </button>
+              </div>
+            </div>
+          )}
+
+          {area === 'world' && (
+            <div className="demo-division">
+              <div className="lumia-effect-container">
+                <LumiaIsland />
+                <WorldInterventionEffect />
+              </div>
+              <WorldControls />
+              <WorldDecisionPanel />
+              <MicroWorldExplorer />
+              <ParallelWorldManager />
+            </div>
+          )}
+
+          {area === 'creatures' && (
+            <div className="demo-division">
+              <CreatureEncyclopedia />
+            </div>
+          )}
+
+          {area === 'civilization' && (
+            <div className="demo-division">
+              <CivilizationObservatory />
+            </div>
+          )}
+
+          {area === 'exploration' && (
+            <div className="demo-division">
+              <AnomalyExplorer />
+            </div>
+          )}
+
+          {area === 'research' && (
+            <div className="demo-division">
+              <ResearchArchive />
+              <WorldEventPanel />
+            </div>
+          )}
+        </section>
+
+      </main>
+
       <footer className="site-footer">
         <span>
           INTERDIMENSIONAL ECOLOGY OBSERVATORY
         </span>
-
-        <span>
-          初期開發版本 · 介面展示
-        </span>
+        <span>互動展示版本 · 六大研究系統</span>
       </footer>
-      </div>
-    </WorldProvider>
+
+    </div>
   )
 }
 
-export default App
+export default function App() {
+  return (
+    <WorldProvider>
+      <ObservatoryGame />
+    </WorldProvider>
+  )
+}

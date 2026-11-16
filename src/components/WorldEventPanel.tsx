@@ -35,22 +35,36 @@ const filters: {
 ]
 
 export default function WorldEventPanel() {
-  const { world } = useWorld()
+  const { world, activeBranchId } = useWorld()
 
-  const [history, setHistory] = useState<WorldEvent[]>([])
+  const [histories, setHistories] = useState<Record<string, WorldEvent[]>>({})
+  const history = histories[activeBranchId] ?? []
   const [filter, setFilter] = useState<EventFilter>('all')
   const [sort, setSort] = useState<EventSort>('newest')
   const [expanded, setExpanded] = useState(false)
 
   // 保留上一個世界狀態，以偵測演化事件
   const previousWorld = useRef<WorldState>(world)
+  const previousBranchId = useRef(activeBranchId)
 
   useEffect(() => {
+    // 切換平行世界時，重新建立事件比較基準
+    if (previousBranchId.current !== activeBranchId) {
+      previousBranchId.current = activeBranchId
+      previousWorld.current = world
+      setFilter('all')
+      setExpanded(false)
+      return
+    }
+
     const previous = previousWorld.current
 
     // 日期倒退代表世界重置或返回較早狀態
     if (world.info.time < previous.info.time) {
-      setHistory([])
+      setHistories(current => ({
+        ...current,
+        [activeBranchId]: [],
+      }))
       setFilter('all')
       setSort('newest')
       setExpanded(false)
@@ -63,14 +77,18 @@ export default function WorldEventPanel() {
       const incoming = detectWorldEvents(previous, world)
 
       if (incoming.length > 0) {
-        setHistory(current =>
-          appendWorldEvents(current, incoming)
-        )
+        setHistories(current => ({
+          ...current,
+          [activeBranchId]: appendWorldEvents(
+            current[activeBranchId] ?? [],
+            incoming
+          ),
+        }))
       }
     }
 
     previousWorld.current = world
-  }, [world])
+  }, [world, activeBranchId])
 
   // 一、根據類型篩選
   const filteredEvents = history.filter(event =>

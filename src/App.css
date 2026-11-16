@@ -355,3 +355,211 @@
     flex-direction: column;
   }
 }
+
+
+
+/* ============================================================
+   G-5B 六大研究系統展示版
+   【AI 參與說明】ChatGPT 協助撰寫
+   ============================================================ */
+
+.demo-hero {
+  padding: 36px;
+  margin: 28px 0;
+  border: 1px solid #345b56;
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 85% 10%, #244d48, transparent 48%),
+    linear-gradient(135deg, #102b30, #14252b);
+  color: #edf5ef;
+}
+
+.demo-hero h1 {
+  margin: 14px 0;
+  color: #f2d39b;
+  font-size: clamp(28px, 4vw, 46px);
+}
+
+.demo-hero > p:not(.eyebrow) {
+  max-width: 740px;
+  line-height: 1.9;
+  color: #c6d8d3;
+}
+
+.demo-status-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.demo-status-line span {
+  padding: 9px 14px;
+  border: 1px solid #42635d;
+  border-radius: 30px;
+  background: #1a383b;
+  color: #e3f0e8;
+}
+
+.demo-system-button {
+  display: block;
+  width: 100%;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.demo-system-button:hover {
+  transform: translateY(-4px);
+  border-color: #e5c37c;
+  background: #203d40;
+}
+
+.demo-system-button:focus-visible {
+  outline: 3px solid #e5c37c;
+  outline-offset: 3px;
+}
+
+.demo-system-selected {
+  border-color: #d6b36d !important;
+  background: #203d3d;
+}
+
+.demo-research-content {
+  margin: 30px 0;
+  scroll-margin-top: 20px;
+}
+
+.demo-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 28px 0;
+  padding: 22px;
+  border: 1px solid #345854;
+  border-radius: 16px;
+  background: #142d32;
+}
+
+.demo-section-icon {
+  color: #f0c879;
+  font-size: 38px;
+}
+
+.demo-section-heading h2 {
+  color: #f4e4c8;
+  margin: 6px 0;
+}
+
+.demo-section-heading p {
+  color: #bcd1cb;
+}
+
+.demo-division {
+  display: grid;
+  gap: 24px;
+}
+
+.demo-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.demo-dashboard article {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px;
+  border: 1px solid #365a54;
+  border-radius: 14px;
+  background: #172f34;
+}
+
+.demo-dashboard article span {
+  color: #b2cec5;
+  font-size: 14px;
+}
+
+.demo-dashboard article strong {
+  color: #f3d59b;
+  font-size: 22px;
+  overflow-wrap: anywhere;
+}
+
+.demo-resource-panel {
+  padding: 24px;
+  border: 1px solid #365a54;
+  border-radius: 16px;
+  background: #172f34;
+  color: #edf5ef;
+}
+
+.demo-resource-panel h3 {
+  color: #f3d59b;
+}
+
+.demo-resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.demo-resource-grid span {
+  padding: 12px;
+  border-radius: 10px;
+  background: #213d3f;
+}
+
+.demo-quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.demo-quick-actions button {
+  padding: 14px 20px;
+  border: 1px solid #caa76a;
+  border-radius: 12px;
+  background: #24413e;
+  color: #f4dfb6;
+  font: inherit;
+  cursor: pointer;
+}
+
+.demo-quick-actions button:hover {
+  background: #315650;
+}
+
+@media (max-width: 640px) {
+  .demo-hero {
+    padding: 22px;
+  }
+
+  .demo-section-heading {
+    align-items: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .demo-system-button {
+    transition: none;
+  }
+}
+
+
+/* G-6 世界干預動畫容器 */
+.lumia-effect-container {
+  position: relative;
+  isolation: isolate;
+}
+
+.lumia-effect-container > .lumia-scene {
+  position: relative;
+}

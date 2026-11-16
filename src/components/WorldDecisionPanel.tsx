@@ -111,6 +111,12 @@ export default function WorldDecisionPanel() {
       aid: '文明援助',
     }
 
+    window.dispatchEvent(
+      new CustomEvent('lumia-intervention', {
+        detail: decision,
+      })
+    )
+
     setMessage(
       `已執行「${titles[decision]}」，請推進時間觀察變化。`
     )

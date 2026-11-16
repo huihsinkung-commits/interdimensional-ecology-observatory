@@ -23,8 +23,8 @@ export function weighted(
 }
 
 export function fuseWorlds(
-  a: WorldBranch, 
-  b: WorldBranch, 
+  a: WorldBranch,
+  b: WorldBranch,
   weightA: number
 ): WorldState {
   if (a.id === b.id) {
